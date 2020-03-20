@@ -26,7 +26,7 @@ async def on_message(message):
     print(f'Message from {message.author}: {message.content}')
     print(f"{message.channel.id}")
     if message.content.lower().find("what time") != -1:
-        now = datetime.datetime.now()
+        now = datetime.datetime.now() - datetime.timedelta(hours=4)
         await message.channel.send(f"It is {now:%I:%M %p} EST on {now:%b %d}")
 
 client.run(TOKEN)
