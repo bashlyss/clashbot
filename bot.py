@@ -6,7 +6,7 @@ import discord
 import os
 
 TOKEN = os.environ['TOKEN']
-TIMECHANNEL = os.environ['TIMECHANNEL']
+TIMECHANNEL = int(os.environ['TIMECHANNEL'])
 
 client = discord.Client()
 
