@@ -14,7 +14,7 @@ client = discord.Client()
 async def on_ready():
     print(f'Logged on as {client.user}')
     while True:
-        now = datetime.datetime.now()
+        now = datetime.datetime.now() - datetime.timedelta(hours=4)
         await client.get_channel(TIMECHANNEL).edit(name=f"{now:%I-%M-%p-%b-%d} EST") # The channel gets changed here
         await asyncio.sleep(60)
 
