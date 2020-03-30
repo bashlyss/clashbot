@@ -34,7 +34,7 @@ async def on_reaction_add(reaction, user):
     is_raffle = reaction.message.content.lower().find('raffle') != -1
     if is_raffle:
         print(reaction.emoji)
-    if is_raffle and reaction.emoji == "kirby":
+    if is_raffle and reaction.emoji.name == "kirby":
         users = await reaction.users().flatten()
         winner = random.choice(users)
         await reaction.message.channel.send(f"Bouncing Kirby raffle winner is {winner}")
