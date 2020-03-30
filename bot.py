@@ -32,6 +32,8 @@ async def on_message(message):
 @client.event
 async def on_reaction_add(reaction, user):
     is_raffle = reaction.message.content.lower().find('raffle') != -1
+    if is_raffle:
+        print(reaction.emoji)
     if is_raffle and reaction.emoji == "kirby":
         users = await reaction.users().flatten()
         winner = random.choice(users)
