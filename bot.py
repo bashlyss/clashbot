@@ -30,7 +30,9 @@ async def on_message(message):
         now = datetime.datetime.now() - datetime.timedelta(hours=4)
         await message.channel.send(f"It is {now:%I:%M %p} EST on {now:%A %b %d}")
 
-    if message.content.lower().find("sorry") != -1:
+    sorry_words = ["sorry", "s0rry"]
+
+    if any(message.content.lower().find(word) != -1 for word in sorry_words):
         await message.channel.send("ODS says it is not sorry o'clock!")
 
 @client.event
