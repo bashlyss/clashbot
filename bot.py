@@ -16,7 +16,7 @@ async def on_ready():
     print(f'Logged on as {client.user}')
     while True:
         now = datetime.datetime.now() - datetime.timedelta(hours=4)
-        await client.get_channel(TIMECHANNEL).edit(name=f"{now:%I-%M-%p-%b-%d} EST") # The channel gets changed here
+        await client.get_channel(TIMECHANNEL).edit(name=f"{now:%I-%M-%p-%a-%b-%d} EST") # The channel gets changed here
         await asyncio.sleep(60)
 
 @client.event
@@ -28,7 +28,10 @@ async def on_message(message):
     print(f"{message.channel.id}")
     if message.content.lower().find("what time") != -1:
         now = datetime.datetime.now() - datetime.timedelta(hours=4)
-        await message.channel.send(f"It is {now:%I:%M %p} EST on {now:%b %d}")
+        await message.channel.send(f"It is {now:%I:%M %p} EST on {now:%A %b %d}")
+
+    if message.content.lower().find("sorry") != -1:
+        await message.channel.send("ODS says it is not sorry o'clock!")
 
 @client.event
 async def on_reaction_add(reaction, user):
